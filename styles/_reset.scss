@@ -35,6 +35,7 @@
 }
 
 @mixin resetBtn {
+    font-family: $font-family;
     text-align: center;
     padding: 0;
     margin: 0;
