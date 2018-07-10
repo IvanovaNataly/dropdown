@@ -3,6 +3,108 @@
 @import "fonts";
 @import "reset";
 
+@mixin input($lineHeight: 31px, $font-size: $font-size-ss, $width: 100%, $height: $lineHeight) {
+    font-family: $font-family;
+    font-size: $font-size;
+    text-align: left;
+    color: $text-dark;
+    width: $width;
+    height: $height;
+    line-height: $lineHeight;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 10px;
+    padding-left: 10px;
+    background: $white;
+    border: 1px solid $border-color;
+    border-radius: $input-border-radius;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+    &:disabled {
+        color: $text-light;
+        border: 1px solid $input-disabled;
+    }
+    &:hover {
+        border: 1px solid $input-hover;
+    }
+    &:focus, &:active {
+        border: 1px solid $input-focus;
+        box-shadow: inset 0 0 0 3px rgba(136, 130, 216, 0.15);
+    }
+    &.ng-valid:not(.ng-pristine) {
+        // border: 1px solid $input-success;
+    }
+    &.ng-invalid.ng-touched {
+        border: 1px solid $input-error;
+        transition: none;
+    }
+    .ct-form-has-error &.ng-invalid {
+        border: 1px solid $input-error;
+        transition: none;
+    }
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        font-style: normal;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+        font-style: normal;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+        font-style: normal;
+    }
+    &::placeholder {
+        font-size: $font-size-ss;
+        font-style: normal;
+        color: $text-light;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+@mixin searchBox($height) {
+    display: block;
+    width: 100%;
+    height: $height;
+    line-height: $height;
+    margin: 0;
+    padding: 0 5px;
+    background-color: $bg-light;
+    border: none;
+    box-shadow: $shadow-textbox;
+    position: relative;
+
+    .options-search-icon:after {
+        content: 'N';
+        display: inline-block;
+        font-family: 'ctIcon';
+        font-size: 15px;
+        font-weight: normal;
+        color: $text-light;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 10px;
+        top: 2px;
+    }
+
+    .options-search-input {
+        @include input;
+        border-radius: 2px;
+        padding-right: 30px;
+        &:focus, &:active {
+            border: 1px solid $input-hover;
+            box-shadow: none;
+             + .options-search-icon:after {
+                content: 'U';
+            }
+        }
+    }
+}
+
 @mixin optionsList($lineHeight: 26px,
                 $width: unset,
                 $max-width: 390px,
@@ -11,7 +113,7 @@
     max-width: $max-width;
     min-width: $minWidth;
     max-height: $lineHeight * 10.6;
-    margin: 0;
+    margin: 1px 0 0 0;
     padding: 2px 0 0 0;
     background-color: $white;
     border: 1px solid $border-color;
@@ -51,7 +153,6 @@
         cursor: pointer;
         &:focus {
             background-color: $hover-bg !important;
-            outline: 1px auto crimson;
         }
         &:hover {
             background-color: $hover-bg !important;
@@ -78,20 +179,6 @@
         padding-right: 5px;
     }
 
-    &.with-header .options-item:first-child {
-        height: 15px;
-        line-height: 15px;
-        &:hover {
-            background-color: $white;
-            cursor: default;
-        }
-        span {
-            font-size: $font-size-p;
-            font-weight: 700;
-            margin-left: -3px;
-        }
-    }
-
     //icon before text
     .option-icon:before {
         content: attr(data-icon);
@@ -109,3 +196,70 @@
         }
     }
 }
+
+@mixin optionsListCompiled($headerHeight: 0, $bodyHeight: 250px, $footerHeight: 0) {
+    padding-top: 0;
+    overflow-y: hidden;
+    .options-header {
+        display: flex;
+        height: $headerHeight;
+        margin-left: 13px;
+        margin-right: 12px + 15px; //scroll bar width + .option padding
+        justify-content: space-between;
+        &-text {
+            font-size: $font-size-p;
+            font-weight: 700;
+        }
+    }
+
+    .options-search {
+        @include searchBox($headerHeight);
+    }
+
+    .options-body {
+        @include resetUl;
+        max-height: $bodyHeight;
+        overflow-y: auto;
+    }
+}
+
+@mixin optionsToggleBtn($width: 220px) {
+    @include input;
+    display: flex;
+    font-size: $font-size-ss;
+    width: $width;
+    padding-right: 0;
+    justify-content: space-between;
+    align-items: center;
+
+    .options-list-btn-label {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        flex-grow: 1;
+    }
+
+    //override of bootstrap
+    &:after {
+        content: '`';
+        display: inline-block;
+        text-align: center;
+        font-family: 'ctIcon';
+        font-size: 17px;
+        color: $text-medium;
+        width: 31px;
+        height: 100%;
+        background-image: linear-gradient(to top, #f2f4f7, #ffffff);
+        border: none;
+        border-left: 1px solid $border-color;
+        vertical-align: middle;
+        flex-shrink: 0;
+    }
+
+    &:hover:after {
+        color: $text-darkest;
+    }
+}
+
+
+
