@@ -12,7 +12,7 @@
     min-width: $minWidth;
     max-height: $lineHeight * 10.6;
     margin: 0;
-    padding: 0;
+    padding: 2px 0 0 0;
     background-color: $white;
     border: 1px solid $border-color;
     border-radius: $dd-border-radius;
@@ -72,17 +72,24 @@
         &>*:not(:last-child) {
             margin-right: 13px;
         }
-        &.header {
-            font-size: $font-size-p;
-            font-weight: 700;
-            .option-text {
-                margin-left: -3px;
-            }
-        }
     }
 
     &.long .option {
         padding-right: 5px;
+    }
+
+    &.with-header .options-item:first-child {
+        height: 15px;
+        line-height: 15px;
+        &:hover {
+            background-color: $white;
+            cursor: default;
+        }
+        span {
+            font-size: $font-size-p;
+            font-weight: 700;
+            margin-left: -3px;
+        }
     }
 
     //icon before text
