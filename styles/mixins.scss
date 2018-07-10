@@ -3,6 +3,10 @@
 @import "fonts";
 @import "reset";
 
+.some-class {
+    --dd-width: 300px;
+}
+
 @mixin input($lineHeight: 31px, $font-size: $font-size-ss, $width: 100%, $height: $lineHeight) {
     font-family: $font-family;
     font-size: $font-size;
@@ -147,10 +151,10 @@
                 $width: unset,
                 $max-width: 390px,
                 $minWidth: 125px) {
-    width: $width;
+    width: var(--dd-width, $width);
     max-width: $max-width;
     min-width: $minWidth;
-    max-height: $lineHeight * 10.6;
+    max-height: $lineHeight * 10.7;
     margin: 1px 0 0 0;
     padding: 2px 0 0 0;
     background-color: $white;
@@ -190,10 +194,11 @@
         text-overflow: ellipsis;
         cursor: pointer;
         &:focus {
-            background-color: $hover-bg !important;
+            background-color: $hover-bg;
+            outline: none;
         }
         &:hover {
-            background-color: $hover-bg !important;
+            background-color: $hover-bg;
         }
         &.selected {
             color: $text-darkest;
@@ -241,6 +246,7 @@
     .options-header {
         display: flex;
         height: $headerHeight;
+        line-height: $headerHeight;
         margin-left: 13px;
         margin-right: 12px + 15px; //scroll bar width + .option padding
         justify-content: space-between;
@@ -281,7 +287,7 @@
     @include input;
     display: flex;
     font-size: $font-size-ss;
-    width: $width;
+    width: var(--dd-width, $width);
     padding-right: 0;
     justify-content: space-between;
     align-items: center;

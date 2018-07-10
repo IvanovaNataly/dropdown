@@ -18,7 +18,7 @@ body {
                             $minWidth: 125px);
     }
     &.with-titles {
-        @include optionsListCompiled(15px); //header height
+        @include optionsListCompiled(20px); //header height
     }
     &.with-search {
         @include optionsListCompiled(44px); //header height
