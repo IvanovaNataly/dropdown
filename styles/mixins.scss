@@ -196,9 +196,16 @@
         &:hover {
             background-color: $hover-bg;
         }
-        &.selected {
+        &.active {
             color: $text-darkest;
             font-weight: 600;
+        }
+        &.disabled {
+            opacity: 0.5;
+            cursor: default;
+            &:hover {
+                background-color: initial;
+            }
         }
         &-text {
             overflow: hidden;
@@ -211,6 +218,10 @@
         }
         &>*:not(:last-child) {
             margin-right: 13px;
+        }
+        &.no-results:hover {
+            background-color: initial;
+            cursor: default;
         }
     }
 
