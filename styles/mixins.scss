@@ -147,10 +147,10 @@
                 $width: unset,
                 $max-width: 390px,
                 $minWidth: 125px) {
-    width: var(--dd-width, $width);
+    width: $width;
     max-width: $max-width;
     min-width: $minWidth;
-    max-height: $lineHeight * 10.7;
+    max-height: $lineHeight * 10.6;
     margin: 1px 0 0 0;
     padding: 2px 0 0 0;
     background-color: $white;
@@ -236,15 +236,15 @@
     }
 }
 
-@mixin optionsListCompiled($headerHeight: 0, $bodyHeight: 250px, $footerHeight: 0) {
+@mixin optionsListCompiled($headerHeight: 0, $footerHeight: 0) {
     padding-top: 0;
-    overflow-y: hidden;
+    padding-bottom: 0;
     .options-header {
         display: flex;
         height: $headerHeight;
         line-height: $headerHeight;
         margin-left: 13px;
-        margin-right: 12px + 15px; //scroll bar width + .option padding
+        margin-right: 12px + 5px; //scroll bar width + .option padding
         justify-content: space-between;
         &-text {
             font-size: $font-size-p;
@@ -256,10 +256,15 @@
         @include searchBox($headerHeight);
     }
 
-    .options-body {
-        @include resetUl;
-        max-height: $bodyHeight;
-        overflow-y: auto;
+    .options-list {
+        margin-top: 0;
+        padding-top: 0;
+        border: none;
+        box-shadow: none;
+        position: static;
+        .option {
+            padding-right: 5px;
+        }
     }
 
     .options-footer {

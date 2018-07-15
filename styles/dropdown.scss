@@ -4,24 +4,42 @@ body {
     padding: 50px;
 }
 
+//Define this variable in component css/scss file
+//in order to equal width of dropdown trigger and dropdown list
+.some-class-1 {
+    --dd-width: 180px;
+}
+
+.some-class-2 {
+   --dd-width: 300px;
+}
+
+.some-class-3 {
+    --dd-width: 220px;
+}
+/////////////////////////////////////////////////////
+
 .options-list {
     &.primary {
         @include optionsList($lineHeight: 37px,
-                             $width: 280px,
+                             $width: var(--dd-width, 280px),
                              $max-width: unset,
                              $minWidth: unset);
     }
-    &.basic {
+    &.simple {
         @include optionsList($lineHeight: 26px,
-                            $width: unset,
+                            $width: var(--dd-width, unset),
                             $max-width: 390px,
                             $minWidth: 125px);
     }
+}
+
+.options-box {
     &.with-titles {
-        @include optionsListCompiled(20px); //header height
+        @include optionsListCompiled($headerHeight: 20px); //titles height
     }
     &.with-search {
-        @include optionsListCompiled(44px); //header height
+        @include optionsListCompiled($headerHeight: 44px); //search height
     }
 }
 
@@ -74,7 +92,3 @@ body {
     }
 }
 
-
-.some-class {
-    --dd-width: 300px;
-}
