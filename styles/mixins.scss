@@ -249,8 +249,10 @@
 }
 
 @mixin optionsListCompiled($headerHeight: 0, $footerHeight: 0) {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
+    border: 1px solid $border-color;
+    border-radius: $dd-border-radius;
+    box-shadow: $box-shadow;
     .options-header {
         display: flex;
         height: $headerHeight;

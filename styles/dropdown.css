@@ -248,8 +248,10 @@ body {
       cursor: pointer; }
 
 .options-box.with-titles {
-  padding-top: 0;
-  padding-bottom: 0; }
+  padding: 0;
+  border: 1px solid #D7DbE5;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16); }
   .options-box.with-titles .options-header {
     display: flex;
     height: 20px;
@@ -391,8 +393,10 @@ body {
         .options-box.with-titles .options-footer .options-add .iconFont.plus:after {
           content: 'p'; }
 .options-box.with-search {
-  padding-top: 0;
-  padding-bottom: 0; }
+  padding: 0;
+  border: 1px solid #D7DbE5;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16); }
   .options-box.with-search .options-header {
     display: flex;
     height: 44px;
