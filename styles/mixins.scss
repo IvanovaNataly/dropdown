@@ -336,6 +336,36 @@
     }
 }
 
+@mixin dd-descriptive {
+    width: 209px;
+    height: auto;
+    padding: 8px 0;
+    border-radius: 2px;
+    background-color: $white;
+    box-shadow: $box-shadow;
+    .options-item-description {
+        padding: 10px 13px 0 13px;
+    }
+    .options-item-description:not(:last-child) .option-description {
+        padding-bottom: 10px;
+        border-bottom: 1px solid $border-color;
+    }
+    .options-item-description:hover {
+        background-color: $hover-bg;
+    }
+    .option-title {
+        font-size: $font-size-xs;
+        color: $black;
+        margin-bottom: 3px;
+    }
+    .option-description {
+        font-size: $font-size-p;
+        color: $text-medium;
+    }
+}
+
+
+
 
 
 

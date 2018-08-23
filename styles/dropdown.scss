@@ -98,3 +98,9 @@ body {
     background: url('../assets/img/loader.svg') no-repeat center;
 }
 
+
+
+.options-list.descriptive {
+    @include dd-descriptive;
+}
+

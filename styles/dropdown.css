@@ -662,4 +662,26 @@ body {
   height: 100%;
   background: url("../assets/img/loader.svg") no-repeat center; }
 
+.options-list.descriptive {
+  width: 209px;
+  height: auto;
+  padding: 8px 0;
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16); }
+  .options-list.descriptive .options-item-description {
+    padding: 10px 13px 0 13px; }
+  .options-list.descriptive .options-item-description:not(:last-child) .option-description {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #D7DbE5; }
+  .options-list.descriptive .options-item-description:hover {
+    background-color: #f1f4f8; }
+  .options-list.descriptive .option-title {
+    font-size: 12px;
+    color: #000000;
+    margin-bottom: 3px; }
+  .options-list.descriptive .option-description {
+    font-size: 10px;
+    color: #959FB2; }
+
 /*# sourceMappingURL=dropdown.css.map */
